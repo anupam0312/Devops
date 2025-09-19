@@ -28,10 +28,11 @@ pipeline {
 
 
         stage('Archive Artifact') {
-            steps {
-                archiveArtifacts artifacts: 'build.zip', fingerprint: true
-            }
-        }
+    steps {
+        archiveArtifacts artifacts: 'build.tar.gz', followSymlinks: false
+    }
+}
+
 
         stage('Notify') {
             steps {
