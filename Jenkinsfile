@@ -20,13 +20,12 @@ pipeline {
             }
         }
 
-        stage('Build Artifact') {
-            steps {
-                sh '''
-                    zip -r build.zip . -x "node_modules/*" ".git/*" "Jenkinsfile"
-                '''
-            }
-        }
+       stage('Build Artifact') {
+    steps {
+        sh 'tar --exclude=node_modules --exclude=.git --exclude=Jenkinsfile -czf build.tar.gz .'
+    }
+}
+
 
         stage('Archive Artifact') {
             steps {
